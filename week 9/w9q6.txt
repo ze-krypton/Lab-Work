@@ -1,0 +1,15 @@
+#!/bin/bash
+# Check if two filenames are supplied as arguments
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <file1> <file2>"
+    exit 1
+ fi
+ file1=$1 file2=$2
+# Compare the files using cmp
+if cmp -s "$file1" "$file2"; then
+    echo "The files '$file1' and '$file2' are the same."
+    rm "$file2"
+    echo "Deleted '$file2'."
+ else
+    echo "The files '$file1' and '$file2' are different."
+ fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+# Overtime rate
+overtime_rate=12
+# Number of employees
+num_employees=3
+# Loop to calculate overtime for 10 employees
+for (( i=1; i<=num_employees; i++ )) 
+do
+    # Prompt the user to input the number of hours worked by the employee
+    echo -n "Enter the number of hours worked by employee $i: "
+    read hours_worked
+    
+    # Calculate overtime pay if hours worked > 40
+    if [ $hours_worked -gt 40 ]; then
+        overtime_hours=$(( hours_worked - 40 ))
+        overtime_pay=$(( overtime_hours * overtime_rate ))
+        echo "Employee $i worked $hours_worked hours. Overtime Pay = Rs. $overtime_pay"
+    else
+        echo "Employee $i worked $hours_worked hours. No overtime pay."
+    fi 
+done

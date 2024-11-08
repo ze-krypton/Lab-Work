@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Please provide an argument ('one', 'two', or 'three')."
+    exit 1 
+fi 
+
+if [ "$1" == "one" ]; then
+    # Bold text (using ANSI escape code for bold)
+    echo -e "\033[1m$1\033[0m" 
+elif [ "$1" == "two" ]; then
+    # Reverse the string (using the `rev` command)
+    echo "$1" | rev 
+elif [ "$1" == "three" ]; then
+    # Blink text (using ANSI escape code for blinking text)
+    # Loop to blink 'three' indefinitely
+    while true; do
+        echo -e "\033[5m$1\033[0m"   # Show blinking text
+        sleep 0.5                    # Wait for half a second
+        clear                        # Clear the screen
+        sleep 0.5                    # Wait for half a second
+    done
+else
+    # Invalid argument
+    echo "Invalid argument. Please use 'one', 'two', or 'three'." 
+fi
